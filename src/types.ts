@@ -15,8 +15,13 @@ export interface InventoryRecord {
   reserved: number;
 }
 
+export interface CatalogFilters {
+  query?: string;
+  category?: string;
+}
+
 export interface ProductStore {
-  listProducts(): Product[];
+  listProducts(filters?: CatalogFilters): Product[];
   getProduct(sku: string): Product | null;
   getInventory(sku: string, location: string): InventoryRecord | null;
 }

@@ -15,3 +15,7 @@ Express owns routing, JSON parsing, request identifiers, and the final error res
 - Monetary amounts are integer minor units.
 - Inventory availability is derived from on-hand minus reserved units.
 - State-changing endpoints must define retry and idempotency behavior before release.
+
+## Catalog reads
+
+The store applies category and token filters before the service slices a page. Pagination uses the last name/SKU pair as its continuation key, avoiding offset changes when products are inserted before the current page.

@@ -11,6 +11,8 @@ import type { ProductStore } from "./types.js";
 interface ServiceConfig {
   apiVersion: string;
   inventoryLocation: string;
+  defaultPageSize: number;
+  maxPageSize: number;
 }
 
 const serviceConfig = JSON.parse(
@@ -24,7 +26,7 @@ export interface CreateAppOptions {
 }
 
 export function createApp({ store = createStore() }: CreateAppOptions = {}): Express {
-  const catalog = new CatalogService(store);
+  const catalog = new CatalogService(store, serviceConfig);
   const inventory = new InventoryService(store, serviceConfig.inventoryLocation);
   const app = express();
 
@@ -36,8 +38,18 @@ export function createApp({ store = createStore() }: CreateAppOptions = {}): Exp
     response.json({ status: "ok", requestId: response.locals.requestId });
   });
 
-  app.get("/products", (_request, response) => {
-    response.json({ data: catalog.listProducts(), requestId: response.locals.requestId });
+  app.get("/products", (request, response) => {
+    const result = catalog.listProducts({
+      query: readOptionalQueryString(request.query.q, "q"),
+      category: readOptionalQueryString(request.query.category, "category"),
+      cursor: readOptionalQueryString(request.query.cursor, "cursor"),
+      limit: readOptionalQueryString(request.query.limit, "limit")
+    });
+    response.json({
+      data: result.items,
+      page: result.page,
+      requestId: response.locals.requestId
+    });
   });
 
   app.get("/products/:sku", (request, response) => {
