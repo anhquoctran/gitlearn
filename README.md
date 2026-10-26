@@ -11,4 +11,4 @@ A compact Node.js commerce API for exercising branch comparison and code review 
 
 The feature branches change the catalog service, HTTP handler, configuration, API docs, and application wiring. Their changes are intentionally related so a reviewer can trace behavior across layers.
 
-Run the sample API from `diff-lab/` with `npm start` (Node.js 20 or newer).
+The sample API lives in `services/`. Run it from that directory with `npm start` (Node.js 20 or newer).
