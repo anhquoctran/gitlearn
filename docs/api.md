@@ -25,6 +25,7 @@ The cursor encodes the final product name and SKU from the previous page. Client
 | Status | Code | Meaning |
 | --- | --- | --- |
 | 400 | INVALID_ARGUMENT | A required value is malformed. |
+| 400 | INVALID_CURSOR | The catalog continuation token is invalid. |
 | 404 | PRODUCT_NOT_FOUND | The product is not active. |
 | 404 | STOCK_NOT_FOUND | No stock record exists. |
 | 500 | INTERNAL_ERROR | The request failed unexpectedly. |
