@@ -1,6 +1,6 @@
 {
   "domain": "orders",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "items": [
     {
       "id": "orders-001",
@@ -127,6 +127,70 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-bulk-101",
+      "label": "Orders managed batch 101",
+      "state": "active",
+      "owner": "operations",
+      "tags": [
+        "orders",
+        "bulk",
+        "managed"
+      ],
+      "metadata": {
+        "rank": 101,
+        "region": "north-america",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-bulk-102",
+      "label": "Orders managed batch 102",
+      "state": "draft",
+      "owner": "operations",
+      "tags": [
+        "orders",
+        "bulk",
+        "retry"
+      ],
+      "metadata": {
+        "rank": 102,
+        "region": "north-america",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "orders-bulk-103",
+      "label": "Orders managed batch 103",
+      "state": "active",
+      "owner": "support",
+      "tags": [
+        "orders",
+        "bulk",
+        "replay"
+      ],
+      "metadata": {
+        "rank": 103,
+        "region": "europe",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-bulk-104",
+      "label": "Orders managed batch 104",
+      "state": "active",
+      "owner": "support",
+      "tags": [
+        "orders",
+        "bulk",
+        "audit"
+      ],
+      "metadata": {
+        "rank": 104,
+        "region": "europe",
         "reviewed": true
       }
     }

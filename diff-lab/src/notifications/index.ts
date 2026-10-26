@@ -1,8 +1,8 @@
 // Notifications domain service - owned by Messaging.
 export const DOMAIN = "notifications";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "1.1.0";
+export const DEFAULT_PAGE_SIZE = 40;
+export const FEATURE_MODE = "managed";
 
 export type NotificationsRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 200),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/notifications", permission: "notifications:write" },
   { method: "PATCH", path: "/notifications/:id", permission: "notifications:write" },
   { method: "GET", path: "/notifications/:id/history", permission: "notifications:audit" },
+  { method: "POST", path: "/notifications/batch", permission: "notifications:write" },
 ];
+
+export function buildNotificationsBatchKey(record: NotificationsRecord): string {
+  return DOMAIN + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

@@ -1,8 +1,8 @@
 // Analytics domain service - owned by Insights.
 export const DOMAIN = "analytics";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "1.1.0";
+export const DEFAULT_PAGE_SIZE = 40;
+export const FEATURE_MODE = "managed";
 
 export type AnalyticsRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 200),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/analytics", permission: "analytics:write" },
   { method: "PATCH", path: "/analytics/:id", permission: "analytics:write" },
   { method: "GET", path: "/analytics/:id/history", permission: "analytics:audit" },
+  { method: "POST", path: "/analytics/batch", permission: "analytics:write" },
 ];
+
+export function buildAnalyticsBatchKey(record: AnalyticsRecord): string {
+  return DOMAIN + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

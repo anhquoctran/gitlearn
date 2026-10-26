@@ -1,0 +1,6 @@
+sku,region,currency,amount,effectiveFrom
+sku-001,north-america,USD,24.95,2026-01-01
+sku-001,europe,EUR,22.95,2026-01-01
+sku-014,apac,SGD,32.00,2026-02-15
+sku-031,north-america,USD,18.50,2026-03-01
+sku-031,europe,EUR,17.25,2026-03-01

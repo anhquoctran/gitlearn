@@ -1,6 +1,6 @@
 {
   "domain": "search",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "items": [
     {
       "id": "search-001",
@@ -127,6 +127,70 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-bulk-101",
+      "label": "Search managed batch 101",
+      "state": "active",
+      "owner": "operations",
+      "tags": [
+        "search",
+        "bulk",
+        "managed"
+      ],
+      "metadata": {
+        "rank": 101,
+        "region": "north-america",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-bulk-102",
+      "label": "Search managed batch 102",
+      "state": "draft",
+      "owner": "operations",
+      "tags": [
+        "search",
+        "bulk",
+        "retry"
+      ],
+      "metadata": {
+        "rank": 102,
+        "region": "north-america",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "search-bulk-103",
+      "label": "Search managed batch 103",
+      "state": "active",
+      "owner": "support",
+      "tags": [
+        "search",
+        "bulk",
+        "replay"
+      ],
+      "metadata": {
+        "rank": 103,
+        "region": "europe",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-bulk-104",
+      "label": "Search managed batch 104",
+      "state": "active",
+      "owner": "support",
+      "tags": [
+        "search",
+        "bulk",
+        "audit"
+      ],
+      "metadata": {
+        "rank": 104,
+        "region": "europe",
         "reviewed": true
       }
     }

@@ -1,11 +1,11 @@
-import { normalizeQuery, summarizeAnalytics, validateAnalytics } from "../../src/analytics/index.js";
+import { buildAnalyticsBatchKey, normalizeQuery, summarizeAnalytics, validateAnalytics } from "../../src/analytics/index.js";
 
 describe("Analytics domain", () => {
   const validRecord = { id: "rec-001", state: "active" as const, createdAt: "2026-01-01", updatedAt: "2026-01-02", attributes: {} };
 
   test("uses a bounded default page size", () => {
-    expect(normalizeQuery({ requestId: "req-1" }).limit).toBe(20);
-    expect(normalizeQuery({ requestId: "req-2", limit: 500 }).limit).toBe(100);
+    expect(normalizeQuery({ requestId: "req-1" }).limit).toBe(40);
+    expect(normalizeQuery({ requestId: "req-2", limit: 500 }).limit).toBe(200);
   });
 
   test("trims cursors before passing them to storage", () => {
@@ -25,5 +25,12 @@ describe("Analytics domain", () => {
     expect(summary.total).toBe(2);
     expect(summary.active).toBe(1);
     expect(summary.archived).toBe(1);
+  });
+  test("uses the managed page-size ceiling", () => {
+    expect(normalizeQuery({ requestId: "bulk-1", limit: 500 }).limit).toBe(200);
+  });
+
+  test("builds a versioned batch key", () => {
+    expect(buildAnalyticsBatchKey(validRecord)).toBe("analytics:rec-001:1.1.0");
   });
 });

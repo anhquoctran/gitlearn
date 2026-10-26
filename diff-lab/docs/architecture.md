@@ -15,3 +15,7 @@ Harbor Market is organized by domain. Routes validate external input, services o
 - Domain services do not call browser APIs.
 - External providers are wrapped by adapters.
 - Retries must be idempotent and observable.
+
+## Bulk processing
+
+Large writes are split into bounded batches. Each batch records a stable key, row-level outcomes, and an operator replay link.

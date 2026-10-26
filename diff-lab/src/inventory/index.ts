@@ -1,8 +1,8 @@
 // Inventory domain service - owned by Operations.
 export const DOMAIN = "inventory";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "1.1.0";
+export const DEFAULT_PAGE_SIZE = 40;
+export const FEATURE_MODE = "managed";
 
 export type InventoryRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 200),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/inventory", permission: "inventory:write" },
   { method: "PATCH", path: "/inventory/:id", permission: "inventory:write" },
   { method: "GET", path: "/inventory/:id/history", permission: "inventory:audit" },
+  { method: "POST", path: "/inventory/batch", permission: "inventory:write" },
 ];
+
+export function buildInventoryBatchKey(record: InventoryRecord): string {
+  return DOMAIN + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

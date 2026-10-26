@@ -1,12 +1,13 @@
 {
   "name": "harbor-market",
-  "releaseChannel": "stable",
-  "apiTimeoutMs": 5000,
+  "releaseChannel": "preview",
+  "apiTimeoutMs": 8000,
   "defaultLocale": "en-US",
   "currency": "USD",
   "features": {
     "catalogSearch": true,
-    "savedCarts": false,
-    "regionalPricing": false
+    "savedCarts": true,
+    "regionalPricing": false,
+    "bulkImport": true
   }
 }
