@@ -1,0 +1,8 @@
+{
+  "serviceName": "harbor-market",
+  "apiVersion": "v1",
+  "defaultCurrency": "USD",
+  "inventoryLocation": "main",
+  "maxPageSize": 25,
+  "reservationTtlSeconds": 900
+}

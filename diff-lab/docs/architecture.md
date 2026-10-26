@@ -1,17 +1,17 @@
 # Architecture
 
-Harbor Market is organized by domain. Routes validate external input, services own decisions, and fixtures provide repeatable examples.
+The HTTP adapter translates requests and responses. Catalog and inventory services enforce domain rules. The store owns current in-memory state and returns copies so callers cannot mutate records by reference.
 
-## Request path
+## Request lifecycle
 
-1. Parse the request and attach a request identifier.
-2. Resolve the actor and locale.
-3. Validate the domain command.
-4. Persist the state transition and its audit entry.
-5. Publish an event for downstream consumers.
+1. The server assigns a request identifier and parses JSON bodies.
+2. The handler matches a route and reads query parameters.
+3. A domain service validates identifiers and reads the store.
+4. The handler maps domain errors to stable HTTP responses.
 
-## Boundaries
+## Design constraints
 
-- Domain services do not call browser APIs.
-- External providers are wrapped by adapters.
-- Retries must be idempotent and observable.
+- Domain services do not depend on Node's HTTP module.
+- Monetary amounts are integer minor units.
+- Inventory availability is derived from on-hand minus reserved units.
+- State-changing endpoints must define retry and idempotency behavior before release.
