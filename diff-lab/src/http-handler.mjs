@@ -12,7 +12,16 @@ export function createHttpHandler({ catalog, inventory }) {
       }
 
       if (method === "GET" && url.pathname === "/products") {
-        return { status: 200, body: { data: catalog.listProducts(), requestId } };
+        const result = catalog.listProducts({
+          query: url.searchParams.get("q") ?? "",
+          category: url.searchParams.get("category") ?? undefined,
+          cursor: url.searchParams.get("cursor") ?? undefined,
+          limit: url.searchParams.get("limit") ?? undefined
+        });
+        return {
+          status: 200,
+          body: { data: result.items, page: result.page, requestId }
+        };
       }
 
       const productMatch = url.pathname.match(/^\/products\/([^/]+)$/);

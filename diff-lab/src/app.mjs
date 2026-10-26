@@ -8,7 +8,7 @@ const serviceConfig = JSON.parse(readFileSync(new URL("../config/service.json", 
 export const API_VERSION = serviceConfig.apiVersion;
 
 export function createApp({ store = createStore() } = {}) {
-  const catalog = new CatalogService(store);
+  const catalog = new CatalogService(store, serviceConfig);
   const inventory = new InventoryService(store, serviceConfig.inventoryLocation);
   return {
     apiVersion: API_VERSION,

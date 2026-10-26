@@ -18,3 +18,24 @@ export function parsePositiveInteger(value, field, { fallback, max } = {}) {
   }
   return parsed;
 }
+
+export function normalizeSearchTerm(value) {
+  if (value === undefined || value === null) return "";
+  if (typeof value !== "string") {
+    throw new HttpError(400, "INVALID_ARGUMENT", "q must be a string.");
+  }
+
+  const normalized = value.trim().toLocaleLowerCase("en-US");
+  if (normalized.length > 100) {
+    throw new HttpError(400, "INVALID_ARGUMENT", "q must be at most 100 characters.");
+  }
+  return normalized;
+}
+
+export function normalizeCategory(value) {
+  if (value === undefined || value === null || value === "") return undefined;
+  if (typeof value !== "string" || !/^[a-z0-9-]{1,40}$/i.test(value)) {
+    throw new HttpError(400, "INVALID_ARGUMENT", "category has an invalid format.");
+  }
+  return value.toLowerCase();
+}

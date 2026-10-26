@@ -7,11 +7,19 @@ export function createStore({ products = seedProducts, inventory = seedInventory
   );
 
   return {
-    listProducts() {
+    listProducts({ query = "", category } = {}) {
+      const terms = query.split(/\s+/).filter(Boolean);
       return productRows
         .filter((product) => product.status === "active")
+        .filter((product) => !category || product.category.toLowerCase() === category)
+        .filter((product) => {
+          const searchable = (product.name + " " + product.category + " " + product.sku).toLowerCase();
+          return terms.every((term) => searchable.includes(term));
+        })
         .slice()
-        .sort((left, right) => left.name.localeCompare(right.name))
+        .sort((left, right) =>
+          left.name.localeCompare(right.name) || left.sku.localeCompare(right.sku)
+        )
         .map((product) => structuredClone(product));
     },
 

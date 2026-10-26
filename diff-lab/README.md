@@ -13,8 +13,12 @@ The service listens on port 4100 by default. The in-memory store is seeded with 
 ## Core routes
 
 - GET /health
-- GET /products
+- GET /products?q=trail&category=hydration&limit=20
 - GET /products/:sku
 - GET /inventory/:sku?location=main
 
-The two review branches add catalog discovery and inventory reservation behavior.
+The catalog discovery branch adds filtered keyset pagination. The pricing branch adds region-aware product prices.
+
+## Catalog discovery
+
+Search terms are matched against product name, category, and SKU. Results use a stable name/SKU order and an opaque cursor so clients can request the next page without offset drift.

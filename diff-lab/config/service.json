@@ -3,6 +3,7 @@
   "apiVersion": "v1",
   "defaultCurrency": "USD",
   "inventoryLocation": "main",
-  "maxPageSize": 25,
-  "reservationTtlSeconds": 900
+  "maxPageSize": 100,
+  "reservationTtlSeconds": 900,
+  "defaultPageSize": 20
 }
