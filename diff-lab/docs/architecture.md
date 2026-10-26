@@ -15,3 +15,7 @@ The HTTP adapter translates requests and responses. Catalog and inventory servic
 - Monetary amounts are integer minor units.
 - Inventory availability is derived from on-hand minus reserved units.
 - State-changing endpoints must define retry and idempotency behavior before release.
+
+## Regional price resolution
+
+The pricing service reads an approved price-book snapshot and attaches its version to every quote. Product storage remains currency-neutral; request context selects the region before the response is serialized.

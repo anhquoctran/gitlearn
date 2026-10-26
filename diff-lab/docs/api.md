@@ -6,7 +6,13 @@ All responses are JSON and include a request identifier. Errors use stable codes
 
 - GET /products returns active products ordered by name.
 - GET /products/:sku returns one active product.
+- Optional region query parameter or x-market-region header selects the approved price book.
+- Product responses include price amountCents, currency, region, and priceBookVersion.
 - Unknown or discontinued SKUs return PRODUCT_NOT_FOUND.
+
+## Pricing
+
+Prices are integer minor units and come from the versioned regional price book. Unsupported regions return UNSUPPORTED_REGION. A missing approved product price returns PRICE_UNAVAILABLE; the API never silently converts using a live FX rate.
 
 ## Inventory
 

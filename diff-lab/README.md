@@ -13,8 +13,12 @@ The service listens on port 4100 by default. The in-memory store is seeded with 
 ## Core routes
 
 - GET /health
-- GET /products
-- GET /products/:sku
+- GET /products?region=CA
+- GET /products/:sku?region=CA
 - GET /inventory/:sku?location=main
 
-The two review branches add catalog discovery and inventory reservation behavior.
+The discovery branch adds filtered keyset pagination. The pricing branch returns approved prices for the requested sales region.
+
+## Regional pricing
+
+Product responses include an integer amount in minor units, currency, region, and price-book version. Pass a region query parameter or the x-market-region header. The service uses approved regional prices and does not calculate live exchange rates.

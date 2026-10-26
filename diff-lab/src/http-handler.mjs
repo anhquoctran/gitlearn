@@ -12,12 +12,20 @@ export function createHttpHandler({ catalog, inventory }) {
       }
 
       if (method === "GET" && url.pathname === "/products") {
-        return { status: 200, body: { data: catalog.listProducts(), requestId } };
+        const region = url.searchParams.get("region") ?? request.headers?.["x-market-region"];
+        return {
+          status: 200,
+          body: { data: catalog.listProducts({ region }), requestId }
+        };
       }
 
       const productMatch = url.pathname.match(/^\/products\/([^/]+)$/);
       if (method === "GET" && productMatch) {
-        return { status: 200, body: { data: catalog.getProduct(productMatch[1]), requestId } };
+        const region = url.searchParams.get("region") ?? request.headers?.["x-market-region"];
+        return {
+          status: 200,
+          body: { data: catalog.getProduct(productMatch[1], region), requestId }
+        };
       }
 
       const inventoryMatch = url.pathname.match(/^\/inventory\/([^/]+)$/);

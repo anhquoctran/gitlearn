@@ -4,5 +4,6 @@
   "defaultCurrency": "USD",
   "inventoryLocation": "main",
   "maxPageSize": 25,
-  "reservationTtlSeconds": 900
+  "reservationTtlSeconds": 900,
+  "defaultRegion": "US"
 }
