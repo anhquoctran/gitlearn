@@ -1,5 +1,7 @@
 catalog-search: enabled
 saved-carts: disabled
-regional-pricing: disabled
+regional-pricing: enabled
 shipment-tracking: enabled
 review-moderation: enabled
+localized-catalog: enabled
+ledger-replay: enabled

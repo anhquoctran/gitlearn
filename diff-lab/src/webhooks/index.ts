@@ -1,8 +1,8 @@
 // Webhooks domain service - owned by Integrations.
 export const DOMAIN = "webhooks";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type WebhooksRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/webhooks", permission: "webhooks:write" },
   { method: "PATCH", path: "/webhooks/:id", permission: "webhooks:write" },
   { method: "GET", path: "/webhooks/:id/history", permission: "webhooks:audit" },
+  { method: "GET", path: "/webhooks/:id/region", permission: "webhooks:read" },
 ];
+
+export function buildWebhooksRegionKey(record: WebhooksRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

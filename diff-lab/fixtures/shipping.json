@@ -1,6 +1,6 @@
 {
   "domain": "shipping",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "shipping-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-region-201",
+      "label": "Shipping EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "shipping",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-region-202",
+      "label": "Shipping APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "shipping",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-region-203",
+      "label": "Shipping UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "shipping",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "shipping-region-204",
+      "label": "Shipping CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "shipping",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

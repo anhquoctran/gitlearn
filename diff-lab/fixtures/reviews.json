@@ -1,6 +1,6 @@
 {
   "domain": "reviews",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "reviews-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "reviews-region-201",
+      "label": "Reviews EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "reviews",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "reviews-region-202",
+      "label": "Reviews APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "reviews",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "reviews-region-203",
+      "label": "Reviews UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "reviews",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "reviews-region-204",
+      "label": "Reviews CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "reviews",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

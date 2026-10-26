@@ -1,6 +1,6 @@
 {
   "domain": "cart",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "cart-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "cart-region-201",
+      "label": "Cart EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "cart",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "cart-region-202",
+      "label": "Cart APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "cart",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "cart-region-203",
+      "label": "Cart UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "cart",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cart-region-204",
+      "label": "Cart CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "cart",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

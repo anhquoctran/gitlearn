@@ -1,8 +1,8 @@
 // Catalog domain service - owned by Storefront.
 export const DOMAIN = "catalog";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type CatalogRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/catalog", permission: "catalog:write" },
   { method: "PATCH", path: "/catalog/:id", permission: "catalog:write" },
   { method: "GET", path: "/catalog/:id/history", permission: "catalog:audit" },
+  { method: "GET", path: "/catalog/:id/region", permission: "catalog:read" },
 ];
+
+export function buildCatalogRegionKey(record: CatalogRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

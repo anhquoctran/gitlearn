@@ -1,8 +1,8 @@
 // Reviews domain service - owned by Community.
 export const DOMAIN = "reviews";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type ReviewsRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/reviews", permission: "reviews:write" },
   { method: "PATCH", path: "/reviews/:id", permission: "reviews:write" },
   { method: "GET", path: "/reviews/:id/history", permission: "reviews:audit" },
+  { method: "GET", path: "/reviews/:id/region", permission: "reviews:read" },
 ];
+
+export function buildReviewsRegionKey(record: ReviewsRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

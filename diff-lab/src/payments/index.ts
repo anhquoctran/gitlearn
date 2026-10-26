@@ -1,8 +1,8 @@
 // Payments domain service - owned by Finance.
 export const DOMAIN = "payments";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type PaymentsRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/payments", permission: "payments:write" },
   { method: "PATCH", path: "/payments/:id", permission: "payments:write" },
   { method: "GET", path: "/payments/:id/history", permission: "payments:audit" },
+  { method: "GET", path: "/payments/:id/region", permission: "payments:read" },
 ];
+
+export function buildPaymentsRegionKey(record: PaymentsRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

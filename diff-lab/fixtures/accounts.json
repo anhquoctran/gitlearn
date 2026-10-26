@@ -1,6 +1,6 @@
 {
   "domain": "accounts",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "accounts-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "accounts-region-201",
+      "label": "Accounts EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "accounts",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "accounts-region-202",
+      "label": "Accounts APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "accounts",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "accounts-region-203",
+      "label": "Accounts UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "accounts",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "accounts-region-204",
+      "label": "Accounts CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "accounts",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

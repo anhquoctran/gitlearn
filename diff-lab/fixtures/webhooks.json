@@ -1,6 +1,6 @@
 {
   "domain": "webhooks",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "webhooks-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "webhooks-region-201",
+      "label": "Webhooks EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "webhooks",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "webhooks-region-202",
+      "label": "Webhooks APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "webhooks",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "webhooks-region-203",
+      "label": "Webhooks UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "webhooks",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "webhooks-region-204",
+      "label": "Webhooks CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "webhooks",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

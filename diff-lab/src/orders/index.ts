@@ -1,8 +1,8 @@
 // Orders domain service - owned by Commerce.
 export const DOMAIN = "orders";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type OrdersRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/orders", permission: "orders:write" },
   { method: "PATCH", path: "/orders/:id", permission: "orders:write" },
   { method: "GET", path: "/orders/:id/history", permission: "orders:audit" },
+  { method: "GET", path: "/orders/:id/region", permission: "orders:read" },
 ];
+
+export function buildOrdersRegionKey(record: OrdersRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

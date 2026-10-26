@@ -15,3 +15,7 @@ Harbor Market is organized by domain. Routes validate external input, services o
 - Domain services do not call browser APIs.
 - External providers are wrapped by adapters.
 - Retries must be idempotent and observable.
+
+## Regional boundaries
+
+Regional policy is resolved at the edge and passed as explicit context. Storage keys include the region so data cannot bleed across locales.

@@ -1,6 +1,6 @@
 {
   "domain": "orders",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "orders-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-region-201",
+      "label": "Orders EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "orders",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-region-202",
+      "label": "Orders APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "orders",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "orders-region-203",
+      "label": "Orders UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "orders",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "orders-region-204",
+      "label": "Orders CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "orders",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }

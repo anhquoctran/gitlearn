@@ -1,8 +1,8 @@
 // Shipping domain service - owned by Fulfillment.
 export const DOMAIN = "shipping";
-export const DOMAIN_VERSION = "1.0.0";
-export const DEFAULT_PAGE_SIZE = 20;
-export const FEATURE_MODE = "standard";
+export const DOMAIN_VERSION = "2.0.0";
+export const DEFAULT_PAGE_SIZE = 50;
+export const FEATURE_MODE = "regional";
 
 export type ShippingRecord = {
   id: string;
@@ -30,7 +30,7 @@ export function normalizeQuery(query: DomainQuery): DomainQuery {
   return {
     ...query,
     cursor: query.cursor?.trim() || undefined,
-    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 100),
+    limit: Math.min(Math.max(query.limit ?? DEFAULT_PAGE_SIZE, 1), 150),
   };
 }
 
@@ -59,4 +59,10 @@ export const routes = [
   { method: "POST", path: "/shipping", permission: "shipping:write" },
   { method: "PATCH", path: "/shipping/:id", permission: "shipping:write" },
   { method: "GET", path: "/shipping/:id/history", permission: "shipping:audit" },
+  { method: "GET", path: "/shipping/:id/region", permission: "shipping:read" },
 ];
+
+export function buildShippingRegionKey(record: ShippingRecord, region: string): string {
+  return region.toLowerCase() + ":" + record.id + ":" + DOMAIN_VERSION;
+}
+

@@ -1,6 +1,6 @@
 {
   "domain": "analytics",
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "items": [
     {
       "id": "analytics-001",
@@ -127,6 +127,74 @@
       "metadata": {
         "rank": 8,
         "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "analytics-region-201",
+      "label": "Analytics EU sample 201",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "analytics",
+        "region",
+        "eu-west"
+      ],
+      "metadata": {
+        "rank": 201,
+        "region": "eu-west",
+        "currency": "EUR",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "analytics-region-202",
+      "label": "Analytics APAC sample 202",
+      "state": "active",
+      "owner": "regional-ops",
+      "tags": [
+        "analytics",
+        "region",
+        "apac"
+      ],
+      "metadata": {
+        "rank": 202,
+        "region": "ap-southeast",
+        "currency": "SGD",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "analytics-region-203",
+      "label": "Analytics UK sample 203",
+      "state": "draft",
+      "owner": "regional-support",
+      "tags": [
+        "analytics",
+        "region",
+        "uk"
+      ],
+      "metadata": {
+        "rank": 203,
+        "region": "uk-south",
+        "currency": "GBP",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "analytics-region-204",
+      "label": "Analytics CA sample 204",
+      "state": "active",
+      "owner": "regional-support",
+      "tags": [
+        "analytics",
+        "region",
+        "ca"
+      ],
+      "metadata": {
+        "rank": 204,
+        "region": "ca-central",
+        "currency": "CAD",
         "reviewed": true
       }
     }
