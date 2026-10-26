@@ -1,0 +1,134 @@
+{
+  "domain": "payments",
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "payments-001",
+      "label": "Payments example 1",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 1,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "payments-002",
+      "label": "Payments example 2",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 2,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "payments-003",
+      "label": "Payments example 3",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 3,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "payments-004",
+      "label": "Payments example 4",
+      "state": "draft",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 4,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "payments-005",
+      "label": "Payments example 5",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 5,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "payments-006",
+      "label": "Payments example 6",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 6,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "payments-007",
+      "label": "Payments example 7",
+      "state": "active",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 7,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "payments-008",
+      "label": "Payments example 8",
+      "state": "draft",
+      "owner": "finance",
+      "tags": [
+        "payments",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 8,
+        "region": "global",
+        "reviewed": true
+      }
+    }
+  ]
+}

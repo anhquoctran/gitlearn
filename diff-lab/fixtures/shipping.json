@@ -1,0 +1,134 @@
+{
+  "domain": "shipping",
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "shipping-001",
+      "label": "Shipping example 1",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 1,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-002",
+      "label": "Shipping example 2",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 2,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-003",
+      "label": "Shipping example 3",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 3,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "shipping-004",
+      "label": "Shipping example 4",
+      "state": "draft",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 4,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-005",
+      "label": "Shipping example 5",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 5,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-006",
+      "label": "Shipping example 6",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 6,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "shipping-007",
+      "label": "Shipping example 7",
+      "state": "active",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 7,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "shipping-008",
+      "label": "Shipping example 8",
+      "state": "draft",
+      "owner": "fulfillment",
+      "tags": [
+        "shipping",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 8,
+        "region": "global",
+        "reviewed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "domain": "search",
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "search-001",
+      "label": "Search example 1",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 1,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-002",
+      "label": "Search example 2",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 2,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-003",
+      "label": "Search example 3",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 3,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "search-004",
+      "label": "Search example 4",
+      "state": "draft",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 4,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-005",
+      "label": "Search example 5",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 5,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-006",
+      "label": "Search example 6",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 6,
+        "region": "global",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "search-007",
+      "label": "Search example 7",
+      "state": "active",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v1"
+      ],
+      "metadata": {
+        "rank": 7,
+        "region": "global",
+        "reviewed": true
+      }
+    },
+    {
+      "id": "search-008",
+      "label": "Search example 8",
+      "state": "draft",
+      "owner": "discovery",
+      "tags": [
+        "search",
+        "demo",
+        "v2"
+      ],
+      "metadata": {
+        "rank": 8,
+        "region": "global",
+        "reviewed": true
+      }
+    }
+  ]
+}
