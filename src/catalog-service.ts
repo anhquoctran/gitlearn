@@ -1,21 +1,54 @@
-import { HttpError } from "./errors.mjs";
-import { decodeProductCursor, encodeProductCursor } from "./cursor.mjs";
-import { normalizeCategory, normalizeSearchTerm, parsePositiveInteger, requireString } from "./validation.mjs";
+import { HttpError } from "./errors.js";
+import { decodeProductCursor, encodeProductCursor } from "./cursor.js";
+import {
+  normalizeCategory,
+  normalizeSearchTerm,
+  parsePositiveInteger,
+  requireString
+} from "./validation.js";
+import type { Product, ProductStore } from "./types.js";
+
+export interface CatalogQuery {
+  query?: unknown;
+  category?: unknown;
+  cursor?: unknown;
+  limit?: unknown;
+}
+
+export interface ProductPage {
+  items: Product[];
+  page: {
+    limit: number;
+    total: number;
+    hasMore: boolean;
+    nextCursor: string | null;
+  };
+}
+
+export interface CatalogOptions {
+  defaultPageSize?: number;
+  maxPageSize?: number;
+}
 
 export class CatalogService {
-  constructor(store, { defaultPageSize = 20, maxPageSize = 100 } = {}) {
-    this.store = store;
+  private readonly defaultPageSize: number;
+  private readonly maxPageSize: number;
+
+  constructor(
+    private readonly store: ProductStore,
+    { defaultPageSize = 20, maxPageSize = 100 }: CatalogOptions = {}
+  ) {
     this.defaultPageSize = defaultPageSize;
     this.maxPageSize = maxPageSize;
   }
 
-  listProducts({ query, category, cursor, limit } = {}) {
+  listProducts({ query, category, cursor, limit }: CatalogQuery = {}): ProductPage {
     const normalizedQuery = normalizeSearchTerm(query);
     const normalizedCategory = normalizeCategory(category);
     const pageSize = parsePositiveInteger(limit, "limit", {
       fallback: this.defaultPageSize,
       max: this.maxPageSize
-    });
+    }) ?? this.defaultPageSize;
     const after = decodeProductCursor(cursor);
     const matches = this.store.listProducts({
       query: normalizedQuery,
@@ -38,12 +71,12 @@ export class CatalogService {
         limit: pageSize,
         total: matches.length,
         hasMore,
-        nextCursor: hasMore ? encodeProductCursor(items.at(-1)) : null
+        nextCursor: hasMore ? encodeProductCursor(items.at(-1)!) : null
       }
     };
   }
 
-  getProduct(sku) {
+  getProduct(sku: unknown): Product {
     const product = this.store.getProduct(requireString(sku, "sku"));
     if (!product) {
       throw new HttpError(404, "PRODUCT_NOT_FOUND", "Product was not found.");

@@ -1,15 +1,36 @@
-import { HttpError } from "./errors.mjs";
+import { HttpError } from "./errors.js";
 
-export function requireString(value, field) {
+export interface PositiveIntegerOptions {
+  fallback?: number;
+  max: number;
+}
+
+export function requireString(value: unknown, field: string): string {
   if (typeof value !== "string" || value.trim().length === 0) {
     throw new HttpError(400, "INVALID_ARGUMENT", field + " is required");
   }
   return value.trim();
 }
 
-export function parsePositiveInteger(value, field, { fallback, max } = {}) {
+export function readOptionalQueryString(value: unknown, field: string): string | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "string") {
+    throw new HttpError(400, "INVALID_ARGUMENT", field + " must be a single string.");
+  }
+  return value;
+}
+
+export function parsePositiveInteger(
+  value: unknown,
+  field: string,
+  { fallback, max }: PositiveIntegerOptions
+): number | undefined {
   if (value === undefined || value === null || value === "") {
     return fallback;
+  }
+
+  if (typeof value !== "string") {
+    throw new HttpError(400, "INVALID_ARGUMENT", field + " must be a string containing an integer.");
   }
 
   const parsed = Number(value);
@@ -19,7 +40,7 @@ export function parsePositiveInteger(value, field, { fallback, max } = {}) {
   return parsed;
 }
 
-export function normalizeSearchTerm(value) {
+export function normalizeSearchTerm(value: unknown): string {
   if (value === undefined || value === null) return "";
   if (typeof value !== "string") {
     throw new HttpError(400, "INVALID_ARGUMENT", "q must be a string.");
@@ -32,7 +53,7 @@ export function normalizeSearchTerm(value) {
   return normalized;
 }
 
-export function normalizeCategory(value) {
+export function normalizeCategory(value: unknown): string | undefined {
   if (value === undefined || value === null || value === "") return undefined;
   if (typeof value !== "string" || !/^[a-z0-9-]{1,40}$/i.test(value)) {
     throw new HttpError(400, "INVALID_ARGUMENT", "category has an invalid format.");

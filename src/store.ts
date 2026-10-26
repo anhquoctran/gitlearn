@@ -1,13 +1,20 @@
-import { inventory as seedInventory, products as seedProducts } from "./seed-data.mjs";
+import { inventory as seedInventory, products as seedProducts } from "./seed-data.js";
+import type { CatalogFilters, InventoryRecord, Product, ProductStore } from "./types.js";
 
-export function createStore({ products = seedProducts, inventory = seedInventory } = {}) {
+export interface StoreSeed {
+  products?: Product[];
+  inventory?: InventoryRecord[];
+}
+
+export function createStore({ products = seedProducts, inventory = seedInventory }: StoreSeed = {}): ProductStore {
   const productRows = structuredClone(products);
-  const inventoryRows = new Map(
-    inventory.map((row) => [row.location + ":" + row.sku, structuredClone(row)])
-  );
+  const inventoryRows = new Map<string, InventoryRecord>();
+  for (const row of inventory) {
+    inventoryRows.set(row.location + ":" + row.sku, structuredClone(row));
+  }
 
   return {
-    listProducts({ query = "", category } = {}) {
+    listProducts({ query = "", category }: CatalogFilters = {}) {
       const terms = query.split(/\s+/).filter(Boolean);
       return productRows
         .filter((product) => product.status === "active")
