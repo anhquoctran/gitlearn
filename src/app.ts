@@ -4,6 +4,7 @@ import express, { type ErrorRequestHandler, type Express, type RequestHandler } 
 import { CatalogService } from "./catalog-service.js";
 import { toErrorResponse } from "./errors.js";
 import { InventoryService } from "./inventory-service.js";
+import { PricingService, type PriceBook } from "./pricing-service.js";
 import { createStore } from "./store.js";
 import { readOptionalQueryString } from "./validation.js";
 import type { ProductStore } from "./types.js";
@@ -11,11 +12,15 @@ import type { ProductStore } from "./types.js";
 interface ServiceConfig {
   apiVersion: string;
   inventoryLocation: string;
+  defaultRegion: string;
 }
 
 const serviceConfig = JSON.parse(
   readFileSync(new URL("../config/service.json", import.meta.url), "utf8")
 ) as ServiceConfig;
+const priceBook = JSON.parse(
+  readFileSync(new URL("../config/price-book.json", import.meta.url), "utf8")
+) as PriceBook;
 
 export const API_VERSION = serviceConfig.apiVersion;
 
@@ -24,7 +29,8 @@ export interface CreateAppOptions {
 }
 
 export function createApp({ store = createStore() }: CreateAppOptions = {}): Express {
-  const catalog = new CatalogService(store);
+  const pricing = new PricingService(priceBook, serviceConfig.defaultRegion);
+  const catalog = new CatalogService(store, pricing);
   const inventory = new InventoryService(store, serviceConfig.inventoryLocation);
   const app = express();
 
@@ -36,12 +42,22 @@ export function createApp({ store = createStore() }: CreateAppOptions = {}): Exp
     response.json({ status: "ok", requestId: response.locals.requestId });
   });
 
-  app.get("/products", (_request, response) => {
-    response.json({ data: catalog.listProducts(), requestId: response.locals.requestId });
+  app.get("/products", (request, response) => {
+    const region = readOptionalQueryString(request.query.region, "region") ??
+      request.get("x-market-region");
+    response.json({
+      data: catalog.listProducts({ region }),
+      requestId: response.locals.requestId
+    });
   });
 
   app.get("/products/:sku", (request, response) => {
-    response.json({ data: catalog.getProduct(request.params.sku), requestId: response.locals.requestId });
+    const region = readOptionalQueryString(request.query.region, "region") ??
+      request.get("x-market-region");
+    response.json({
+      data: catalog.getProduct(request.params.sku, region),
+      requestId: response.locals.requestId
+    });
   });
 
   app.get("/inventory/:sku", (request, response) => {
