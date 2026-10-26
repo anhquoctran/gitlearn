@@ -25,6 +25,8 @@ Prices are integer minor units and come from the versioned regional price book. 
 | Status | Code | Meaning |
 | --- | --- | --- |
 | 400 | INVALID_ARGUMENT | A required value is malformed. |
+| 400 | UNSUPPORTED_REGION | The requested sales region is not configured. |
 | 404 | PRODUCT_NOT_FOUND | The product is not active. |
 | 404 | STOCK_NOT_FOUND | No stock record exists. |
+| 503 | PRICE_UNAVAILABLE | The price book has no approved price for the product. |
 | 500 | INTERNAL_ERROR | The request failed unexpectedly. |
