@@ -1,13 +1,22 @@
-import { HttpError } from "./errors.mjs";
-import { requireString } from "./validation.mjs";
+import { HttpError } from "./errors.js";
+import { requireString } from "./validation.js";
+import type { ProductStore } from "./types.js";
+
+export interface Availability {
+  sku: string;
+  location: string;
+  onHand: number;
+  reserved: number;
+  available: number;
+}
 
 export class InventoryService {
-  constructor(store, defaultLocation = "main") {
-    this.store = store;
-    this.defaultLocation = defaultLocation;
-  }
+  constructor(
+    private readonly store: ProductStore,
+    private readonly defaultLocation = "main"
+  ) {}
 
-  getAvailability(sku, location = this.defaultLocation) {
+  getAvailability(sku: unknown, location: unknown = this.defaultLocation): Availability {
     const productSku = requireString(sku, "sku");
     const locationId = requireString(location, "location");
     const stock = this.store.getInventory(productSku, locationId);
