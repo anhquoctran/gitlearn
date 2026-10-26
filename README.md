@@ -1,14 +1,29 @@
-# Git review fixture
+# Harbor Market API review fixture
 
-A compact Node.js commerce API for exercising branch comparison and code review tooling.
+A small TypeScript and Express commerce API for exercising realistic branch comparisons and code review tools. The application lives at the repository root; its source is in `src/`, configuration in `config/`, and operational notes in `docs/`.
+
+## Run locally
+
+Requires Node.js 20 or newer.
+
+```sh
+npm install
+npm start
+```
+
+The API listens on port `4100` by default. Set `PORT` to use a different port. Run `npm run typecheck` to check the TypeScript sources.
+
+## Core routes
+
+- `GET /health`
+- `GET /products`
+- `GET /products/:sku`
+- `GET /inventory/:sku?location=main`
 
 ## Review branches
 
-- `diff-lab/base` contains the shared service baseline.
+- `diff-lab/base` contains the shared API baseline.
 - `diff-lab/left` adds catalog search and cursor pagination.
 - `diff-lab/right` adds region-aware pricing from a versioned price book.
-- `diff-lab/conflict` is a local merge-conflict workspace based on the left branch.
 
-The feature branches change the catalog service, HTTP handler, configuration, API docs, and application wiring. Their changes are intentionally related so a reviewer can trace behavior across layers.
-
-The sample API lives in `services/`. Run it from that directory with `npm start` (Node.js 20 or newer).
+The feature branches make related changes across routes, domain services, storage, configuration, and documentation so reviewers can trace behavior through the application.
